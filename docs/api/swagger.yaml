@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Vertx Metrics API
+  version: 1.0.0
+  description: |
+    This is the Vertx Metrics API.
+    It provides a way to execute some common operations on Java memory management.
+servers:
+  - url: http://localhost:8080
+paths:
+  /allocate:
+    post:
+      summary: Allocate a memory chunk
+      description: Allocate a memory chunk of the specified size (100 MB by default).
+      responses:
+        '202':
+          description: Memory chunk allocated
+        '500':
+          description: Internal server error
+  /release:
+    post:
+      summary: Release a memory chunk
+      description: Release a memory chunk previously allocated.
+      responses:
+        '202':
+          description: Memory chunk released
+        '500':
+          description: Internal server error
+  /release-all:
+    post:
+      summary: Release all memory chunks
+      description: Release all memory chunks previously allocated.
+      responses:
+        '202':
+          description: All memory chunks released
+        '500':
+          description: Internal server error
+  /clean:
+    post:
+      summary: Clean memory
+      description: Clean memory by calling the garbage collector.
+      responses:
+        '202':
+          description: Memory cleaned
+        '500':
+          description: Internal server error
